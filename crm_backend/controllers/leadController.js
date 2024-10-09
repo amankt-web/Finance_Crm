@@ -9,7 +9,7 @@ exports.getLeads = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
+//ready to do so
 // @desc Add a new lead
 exports.addLead = async (req, res) => {
   const {
