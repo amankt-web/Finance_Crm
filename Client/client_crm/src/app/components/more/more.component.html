@@ -1,0 +1,20 @@
+<h2>Recycle Bin</h2>
+<table class="recycle-bin-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Policy Number</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let lead of deletedLeads">
+      <td>{{ lead.name }}</td>
+      <td>{{ lead.policyNumber }}</td>
+      <td>
+        <button class="restore-btn" (click)="restoreLead(lead._id)">Restore</button>
+        <button class="delete-btn" (click)="deletePermanently(lead._id)">Permanently Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

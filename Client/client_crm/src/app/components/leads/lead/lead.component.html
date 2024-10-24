@@ -1,0 +1,20 @@
+<div class="container ">
+  
+    <!-- Actions for upload, export, search, and sort -->
+    <div class="header d-flex align-items-center justify-content-between mb-4">
+      <!-- Import and Export buttons -->
+      <h2>All Leads</h2>
+      <div class="actions d-flex align-items-center">
+        <label for="fileInput" class="btn btn-primary d-flex align-items-center justify-content-center me-3">
+          <span style="margin-right: 5px;">+</span> Import
+        </label>
+        <input id="fileInput" type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" style="display: none;" />
+        <button (click)="exportToExcel()" class="btn btn-primary me-3">Export</button>
+      </div>
+  
+      <!-- Search input -->
+      
+
+   
+  </div>
+  <app-lead-display></app-lead-display> 

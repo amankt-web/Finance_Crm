@@ -1,0 +1,43 @@
+/* General styles for the container */
+
+/* Sidebar styles */
+.sidebar {
+  background-color: #f0f0f0; 
+  height: 100vh; 
+  position: fixed; 
+  width: 200px; 
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+}
+
+.nav {
+  list-style-type: none; 
+  padding: 0; 
+}
+
+.nav-item {
+  margin: 0; 
+}
+
+.nav-link {
+  display: block; 
+  padding: 15px; 
+  color: #333; 
+  text-decoration: none; 
+  transition: background-color 0.3s; 
+}
+
+.nav-link:hover {
+  background-color: #ddd; 
+}
+
+.nav-link.active {
+  background-color: #ccc; 
+  font-weight: bold; 
+}
+
+/* Content area styles */
+.content-area {
+  margin-left: 220px; /* Leave space for sidebar */
+  padding: 20px; /* Padding for content */
+  flex-grow: 1; /* Allow content to grow */
+}

@@ -1,0 +1,102 @@
+/* Styling for the header */
+.header-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #2c3e50; /* Deep blue color */
+}
+
+/* Container styling */
+.reminder-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for filters (dropdowns) */
+.reminder-filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.select-status {
+  display: flex;
+  align-items: center;
+}
+
+.select-status label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.select-status select {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Table styles */
+.reminder-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.reminder-table th {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.reminder-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.reminder-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Hover effect */
+.reminder-table tbody tr:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+/* Pagination controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-controls button {
+  background-color: #3498db;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+  background-color: #2980b9;
+}
+
+.pagination-controls span {
+  font-size: 14px;
+}

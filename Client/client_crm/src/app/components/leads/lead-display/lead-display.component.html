@@ -1,0 +1,305 @@
+<!-- Button to open the popup to add a new lead -->
+<button type="button" class="add-lead-button" (click)="openAddNewLead()">Add New Lead</button>
+<div class="search-section d-inline-block ms-2">
+  <input
+  type="text"
+  placeholder="Search..."
+  [(ngModel)]="searchQuery"
+  (input)="filterData()"
+  class="form-control"
+  style="margin-left: 699px; width: 170px;"
+/>
+
+</div>
+<!-- Modal for Adding New Lead -->
+<div class="modal" [ngClass]="{'show': showModal}" style="display: {{ showModal ? 'block' : 'none' }};">
+  <div class="modal-dialog">
+    <div class="modal-content" style="overflow: scroll;">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Lead</h5>
+        <button type="button" class="close" (click)="closeModal()">×</button>
+      </div>
+      
+      <div class="modal-body">
+        <form [formGroup]="leadForm" (ngSubmit)="addLead()" style="column-count:2">
+          <div class="form-group">
+            <label>Customer Name</label>
+            <input formControlName="Name" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Policy Name</label>
+            <input formControlName="PolicyName" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Policy Type</label>
+            <input formControlName="PolicyType" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Class Of Vehicle</label>
+            <input formControlName="ClassOfVehicle" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Product Type</label>
+            <input formControlName="ProductType" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input formControlName="mobileNumber" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Vehicle Type</label>
+            <input formControlName="vehicleType" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Booked In</label>
+            <input formControlName="BookedIn" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Agent Name</label>
+            <input formControlName="AgentName" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Insurance Company</label>
+            <input formControlName="InsuranceCompany" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Product</label>
+            <input formControlName="Product" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Policy Number</label>
+            <input formControlName="PolicyNumber" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Business Type</label>
+            <input formControlName="BusinnessType" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Vehicle Make</label>
+            <input formControlName="VehicleMake" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Policy Issue Date</label>
+            <input formControlName="PolicyIssueDate" class="form-control" type="date" />
+          </div>
+          <div class="form-group">
+            <label>Vehicle Model</label>
+            <input formControlName="VehicleModel" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Vehicle RegNo.</label>
+            <input formControlName="VehicleRegNo" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Year OF MFG</label>
+            <input formControlName="YearOFMFG" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>GVW/CC</label>
+            <input formControlName="GVW" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Sum Insured/IDV</label>
+            <input formControlName="SumInsured" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>NCB%</label>
+            <input formControlName="NCB" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>OD Premium</label>
+            <input formControlName="ODPremium" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>TP Premium</label>
+            <input formControlName="TPPremimum" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Other</label>
+            <input formControlName="Other" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Net Premium</label>
+            <input formControlName="NetPremimum" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>GST</label>
+            <input formControlName="GST" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Final Premium</label>
+            <input formControlName="FinalPremimum" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Cut & Pay</label>
+            <input formControlName="CutPay" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Balance Amount</label>
+            <input formControlName="BalanceAmount" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Payment Mode</label>
+            <input formControlName="PaymentMode" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Check Number</label>
+            <input formControlName="CheckNumber" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Bank</label>
+            <input formControlName="Bank" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>PO Rate</label>
+            <input formControlName="PORate" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>PO Amount</label>
+            <input formControlName="POAmount" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>TDS Rate</label>
+            <input formControlName="TDSRate" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>TDS Amount</label>
+            <input formControlName="TDSAmount" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Final Payable Amount</label>
+            <input formControlName="FinalPayableAmount" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>CO Rate</label>
+            <input formControlName="CORate" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>CO Amount</label>
+            <input formControlName="COAmount" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Policy Start Date</label>
+            <input formControlName="PolicyStartDate" class="form-control" type="date" />
+          </div>
+          <div class="form-group">
+            <label>Policy End Date</label>
+            <input formControlName="policyEndDate" class="form-control" type="date" />
+          </div>
+          <div class="form-group">
+            <label>Document Upload</label>
+            <input type="file" (change)="onFileSelected($event)" accept="application/pdf" class="form-control" />
+            <button (click)="uploadPDF(selectedLead.PolicyNumber)" class="btn btn-primary mt-2">Upload PDF</button>
+          </div>  
+          <button type="submit" class="submit-button">Add Lead</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Interactive Rows with Column Headers -->
+<div class="list-container mt-4" style="margin-top: 20px;">
+  <!-- Column Headers (Clickable) -->
+  <div class="header-row" (click)="toggleColumnDisplay()" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border-bottom: 2px solid #ddd;  cursor: pointer; transition: background-color 0.3s;">
+    <div class="header-item" style="flex: 1; text-align: center; font-weight: bold;">Insured Name</div>
+    <div class="header-item" style="flex: 1; text-align: center; font-weight: bold;">Insurance Company</div>
+    <div class="header-item" style="flex: 1; text-align: center; font-weight: bold;">Vehicle Model</div>
+    <div class="header-item" style="flex: 1; text-align: center; font-weight: bold;">Policy Start Date</div>
+    <div class="header-item" style="flex: 1; text-align: center; font-weight: bold;">Policy Number</div>
+    <div class="header-item" style="flex: 1; text-align: center; font-weight: bold;">Actions</div>
+  </div>
+</div>
+
+
+<div *ngFor="let lead of leads | paginate: { itemsPerPage: 10, currentPage: currentPage }">
+  <!-- Data Row -->
+  <div class="data-row" (click)="toggleLeadDetails(lead)" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; background-color: #f9f9f9; transition: background-color 0.3s;">
+    <div class="data-item Name" style="flex: 1; padding: 5px 10px; text-align: center;">{{ lead.Name }}</div>
+    <div class="data-item InsuranceCompany" style="flex: 1; padding: 5px 10px; text-align: center;">{{ lead.InsuranceCompany}}</div>
+    <div class="data-item vehicle-type" style="flex: 1; padding: 5px 10px; text-align: center;">{{ lead.VehicleModel }}</div>
+    <div class="data-item PolicyStartDate" style="flex: 1; padding: 5px 10px; text-align: center;">{{ lead.PolicyStartDate | date }}</div>
+    <div class="data-item policy-number" style="flex: 1; padding: 5px 10px; text-align: center;">{{ lead.PolicyNumber }}</div>
+    <div class="data-item actions" style="display: flex; gap: 5px; align-items: center;">
+      
+      
+      <button class="whatsapp-button" (click)="openWhatsApp()" 
+      style="padding: 5px; border: none; border-radius: 3px; cursor: pointer; 
+             background-color: #25D366; color: white; font-size: 14px; 
+             transition: background-color 0.3s; display: flex; align-items: center;"
+      title="WhatsApp"> <!-- Tooltip text -->
+  <i class="fab fa-whatsapp" style="margin-right: 5px;"></i>
+</button>
+
+      <button class="mail-button" (click)="sendMail()" 
+      style="padding: 5px; border: none; border-radius: 3px; cursor: pointer; 
+      background-color: #007bff; color: white; font-size: 14px; 
+      transition: background-color 0.3s; display: flex; align-items: center;" title="Mail">
+          <i class="fas fa-envelope" style="margin-right: 5px;"></i>
+      </button>
+     <!-- Assuming 'lead' is the current lead in your *ngFor loop -->
+        <button class="edit-button" (click)="updateLead(lead._id)" 
+        style="padding: 5px 10px; border: none; border-radius: 3px; cursor: pointer; 
+        background-color: #007bff; color: white; font-size: 14px; transition: background-color 0.3s; 
+        display: flex; align-items: center;" title="Update">
+        <i class="fas fa-edit" style="margin-right: 5px;"></i>
+        </button>
+
+  
+      <button class="delete-button" (click) ="deleteLead(leadId)"
+      style="padding: 5px 10px; border: none; border-radius: 3px; cursor: pointer; 
+      background-color: #dc3545; color: white; font-size: 14px; transition: background-color 0.3s; 
+      display: flex; align-items: center;" title="Delete">
+          <i class="fas fa-trash" style="margin-right: 5px;"></i> 
+      </button>
+  </div>
+  
+    
+</div>
+
+
+  
+  <div *ngIf="lead.showDetails" class="details-row">
+    <div class="details-item">Policy Type: {{ lead.PolicyType }}</div>
+    <div class="details-item">Mobile Number: {{ lead.mobileNumber }}</div>
+    <div class="details-item">Booked In : {{ lead.BookedIn }}</div>
+    <div class="details-item">Agent Name: {{ lead.AgentName }}</div>
+    <div class="details-item">Insurance Company: {{ lead.PolicyName }}</div>
+    <div class="details-item">Product: {{ lead.Product }}</div>
+    <div class="details-item">CO Rate: {{ lead.CORate }}</div>
+    <div class="details-item">Business Type: {{ lead.BusinnessType }}</div>
+    <div class="details-item">Vehicle Make: {{ lead.VehicleMake }}</div>
+    <div class="details-item">Policy Issue Date: {{ lead.PolicyIssueDate }}</div>
+    <div class="details-item">Vehicle RegNo: {{ lead.VehicleRegNo }}</div>
+    <div class="details-item">Year OF MFG: {{ lead.YearOFMFG }}</div>
+    <div class="details-item">GVW/CC: {{ lead.GVW }}</div>
+    <div class="details-item">Sum Insured/IDV: {{ lead.SumInsured }}</div>
+    <div class="details-item">NCB%: {{ lead.NCB }}</div>
+    <div class="details-item">CO Amount: {{ lead.COAmount }}</div>
+    <div class="details-item">OD Premium: {{ lead.ODPremium }}</div>
+    <div class="details-item">TP Premium: {{ lead.TPPremimum }}</div>
+    <div class="details-item">Other: {{ lead.Other }}</div>
+    <div class="details-item">GST: {{ lead.GST }}</div>
+    <div class="details-item">Net Premium: {{ lead.NetPremimum }}</div>
+    <div class="details-item">Final Premium: {{ lead.FinalPremimum }}</div>
+    <div class="details-item">Cut & Pay: {{ lead.CutPay }}</div>
+    <div class="details-item">Balance Amount: {{ lead.BalanceAmount }}</div>
+    <div class="details-item">Payment Mode: {{ lead.PaymentMode }}</div>
+    <div class="details-item">Check Number: {{ lead.CheckNumber }}</div>
+    <div class="details-item">Bank: {{ lead.Bank }}</div>
+    <div class="details-item">PO Rate: {{ lead.PORate }}</div>
+    <div class="details-item">PO Amount: {{ lead.POAmount }}</div>
+    <div class="details-item">TDS Rate: {{ lead.TDSRate }}</div>
+    <div class="details-item">TDS Amount: {{ lead.TDSAmount }}</div>
+    <div class="details-item">Final Payable Amount: {{ lead.FinalPayableAmount }}</div>
+    <div class="details-item">Policy End Date: {{ lead.policyEndDate | date }}</div>
+  </div>
+  
+  <div *ngIf="selectedLead.pdfUrl">
+    <p>Uploaded PDF:</p>
+    <a [href]="selectedLead.pdfUrl" target="_blank">View PDF</a>
+  </div>
+</div>
+
+<pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+

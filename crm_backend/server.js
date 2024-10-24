@@ -1,22 +1,25 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const dotenv = require("dotenv");
-
+const cors = require('cors');
 
 const app = express();
 dotenv.config();
 
 // Import routes
-// const authRoutes = require("./routes/authRoutes");
-const userRoutes = require("./routes/adminRoutes");
-const dataRoutes = require("./routes/financeDataRoutes");
+const userRoutes = require("./routes/userRoutes");
+const authRoutes = require("./routes/authRoutes");
 const leadRoutes = require("./routes/leadRoute");
+const policyRoutes = require("./routes/reminderRoute");
+const agentRoutes = require("./routes/agentRoutes");
 
-
-//Middleware
-app.use(cors());
-app.use(express.json());
+// Middleware
+app.use(cors({
+    origin: 'http://localhost:4200',  // Allow frontend to access this API
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Authorization', 'Content-Type'] 
+}));
+app.use(express.json());  // To parse JSON requests
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
@@ -28,10 +31,11 @@ mongoose.connect(process.env.MONGO_URI)
     });
 
 // Define routes
-// app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/data', dataRoutes);
-app.use('/api',leadRoutes)
+app.use('/api/auth', authRoutes);
+app.use('/api/leads', leadRoutes);  // Updated to have clear route paths
+app.use('/api/policies', policyRoutes);
+app.use('/api/agents', agentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
