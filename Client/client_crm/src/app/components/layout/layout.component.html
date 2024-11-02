@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar" style="overflow: hidden; cursor:pointer">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" (click)="setCurrentComponent(dashboardComponent)" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="setCurrentComponent(leadComponent)" routerLinkActive="active">All Lead</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="setCurrentComponent(reminderMonthComponent)" routerLinkActive="active">Renewal</a>
+        </li>
+
+        <!-- Admin-only access -->
+        <li class="nav-item" >
+          <a class="nav-link" (click)="setCurrentComponent(userManagementComponent)" routerLinkActive="active">Users</a>
+        </li>
+        <li class="nav-item" >
+          <a class="nav-link" (click)="setCurrentComponent(agentsComponent)" routerLinkActive="active">Agents</a>
+        </li>
+        <!-- Add this in your navbar HTML 
+        <li  class="nav-item">
+       <button class="nav-link" (click)="openResetPasswordPopup()">Reset Password</button>
+       </li> -->
+
+        <!-- Logout -->
+        <li class="nav-item">
+          <button class="nav-link" (click)="logout()">Logout</button>
+        </li>
+      </ul>
+    </nav>
+    
+    <!-- Add this somewhere in the layout template -->
+    <div id="resetPasswordModal" class="modal" style="display: none;">
+      <app-reset-password></app-reset-password>
+      
+    </div>
+
+
+    <!-- Content Area -->
+    <div class="content-area" style="width: 76%; overflow: hidden;">
+      <ng-container *ngComponentOutlet="currentComponent"></ng-container>
+    </div>
+  </div>
+</div>

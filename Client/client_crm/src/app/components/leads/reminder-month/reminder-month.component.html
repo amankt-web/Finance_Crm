@@ -1,0 +1,63 @@
+<h2 class="header-title">Policy Renewal Reminders</h2>
+<div class="reminder-container">
+  <div class="reminder-filters">
+    <div class="select-status">
+      <label for="reminder-days">Reminder Type:</label>
+      <select id="reminder-days" (change)="getReminders($event)">
+        <option value="">All</option>
+        <option value="2">2 Days Reminder</option>
+        <option value="14">2 Weeks Reminder</option>
+        <option value="30">1 Month Reminder</option>
+      </select>
+    </div>
+
+    <div class="select-status">
+      <label for="policy-status">Select Policy Status:</label>
+      <select id="policy-status">
+        <option value="all">All Policies</option>
+        <option value="active">Active Policies</option>
+        <option value="expired">Expired Policies</option>
+      </select>
+    </div>
+  </div>
+
+  <table class="reminder-table">
+    <thead>
+      <tr>
+        <th>Insured Name</th>
+        <th>Policy Number</th>
+        <th>Policy Start Date</th>
+        <th>Policy End Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let policy of paginatedPolicies">
+        <td>{{ policy.Name }}</td>
+        <td>{{ policy.PolicyNumber }}</td>
+        <td>{{ policy.PolicyStartDate | date: 'shortDate' }}</td>
+        <td>{{ policy.policyEndDate | date: 'shortDate' }}</td>
+        <td>
+          <button class="status-button" [ngClass]="getPolicyStatus(policy.policyEndDate) === 'Active' ? 'active' : 'expired'">
+            {{ getPolicyStatus(policy.policyEndDate) }}
+          </button>
+        </td>
+        <td>
+          <button (click)="sendWhatsAppMessage(policy)">
+            <i class="fab fa-whatsapp" style="background-color: #25D366;" ></i>
+          </button>
+          <button (click)="sendEmail(policy)">
+            <i class="fas fa-envelope" style=" background-color: #007bff;" ></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-controls">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

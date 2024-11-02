@@ -1,0 +1,52 @@
+.recycle-bin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .recycle-bin-table th, .recycle-bin-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .recycle-bin-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .recycle-bin-table td {
+    background-color: #fff;
+  }
+  
+  .recycle-bin-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .restore-btn, .delete-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .restore-btn {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .restore-btn:hover {
+    background-color: #218838;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c82333;
+  }
+  

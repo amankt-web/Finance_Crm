@@ -1,0 +1,51 @@
+<!-- Button to Open the Add Agent Modal -->
+<h2 style="text-align:left;">Agent</h2>
+<div class="text-center" style="text-align: right !important; margin-top:-62px">
+  
+  <button class="btn btn-primary" (click)="openAddAgentModal()">Add New Agent</button>
+</div>
+
+<!-- Modal for Adding a New Agent -->
+<div class="modal" tabindex="-1" [ngClass]="{'show': showAddAgentModal}" style="display: {{ showAddAgentModal ? 'block' : 'none' }};">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Agent</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeAddAgentModal()"></button>
+      </div>
+      <div class="modal-body">
+        <input class="form-control mb-3" [(ngModel)]="name" placeholder="Name" />
+        <input class="form-control mb-3" [(ngModel)]="email" placeholder="Email" />
+        <input class="form-control mb-3" [(ngModel)]="password" type="password" placeholder="Password" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeAddAgentModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="registerAgent()">Add Agent</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Agents List with Update and Delete Actions -->
+<div class="mt-5 agent-table-container">
+  <table class="table table-striped">
+    <thead class="table-header">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let agent of agents">
+        <td>{{ agent.name }}</td>
+        <td>{{ agent.email }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteAgent(agent._id)">Delete</button>
+          <button class="btn btn-warning btn-sm" (click)="openUpdateForm(agent)">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

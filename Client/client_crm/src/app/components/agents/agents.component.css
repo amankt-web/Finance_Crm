@@ -1,0 +1,151 @@
+/* agents.component.css */
+h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input {
+  margin: 5px;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+}
+
+/* .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+} */
+
+thead {
+  background-color: #34495e;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.modal.show {
+  display: block;
+}
+
+.modal .modal-dialog {
+  max-width: 500px;
+  margin: 100px auto;
+}
+
+.modal-header {
+  background-color: #3498db;
+  color: white;
+}
+
+.modal-body, .modal-footer {
+  padding: 20px;
+}
+
+.modal-footer {
+  text-align: right;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Container around the table for spacing and layout */
+.agent-table-container {
+  max-width: 900px;
+  margin: 0 auto; /* Centers the table */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+/* Style for the table header */
+.table-header {
+  background-color: #3498db; /* Vibrant blue header */
+  color: #ffffff; /* White text color */
+}
+
+.table-header th {
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Style for the table body rows */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Add light borders between table rows */
+table, th, td {
+  border-bottom: 1px solid #ddd; /* Light border for row separation */
+}
+
+/* Padding and alignment for table cells */
+td {
+  padding: 15px;
+  font-size: 14px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* Add background color on hover to make rows interactive */
+tbody tr:hover {
+  background-color: #f1f1f1; /* Light grey on hover */
+  cursor: pointer;
+}
+
+/* Style for buttons */
+button {
+  margin-right: 5px; /* Spacing between buttons */
+}
+
+/* Delete button style */
+.btn-danger {
+  background-color: #e74c3c; /* Red button for delete */
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Update button style */
+.btn-warning {
+  background-color: #f39c12; /* Orange button for update */
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22; /* Darker orange on hover */
+}
+
+/* Table striping for alternating row colors */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Light background for every other row */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #ffffff; /* White for the remaining rows */
+}

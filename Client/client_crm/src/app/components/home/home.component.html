@@ -1,0 +1,59 @@
+<div class="home-container">
+    <header class="header">
+        <h1>Welcome to Finance Portal</h1>
+        <p>Your one-stop solution for all finance-related information.</p>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a routerLink="/">Home</a></li>
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/services">Services</a></li>
+            <li><a routerLink="/contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section class="offers">
+        <div class="offer-item">
+            <h2>Best Financial Solutions</h2>
+            <p>Explore personalized finance solutions tailored for you!</p>
+        </div>
+        <div class="offer-item">
+            <h2>Vehicle Insurance</h2>
+            <p>Get the best vehicle insurance plans to protect your investment.</p>
+        </div>
+        <div class="offer-item">
+            <h2>Retirement Planning</h2>
+            <p>Secure your future with our comprehensive retirement planning services.</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="finance-details">
+            <h2>Finance Overview</h2>
+            <p>We provide a wide range of financial services and information, including:</p>
+            <ul>
+                <li>Investment Strategies</li>
+                <li>Loan Management</li>
+                <li>Insurance Plans</li>
+                <li>Retirement Planning</li>
+                <li>Tax Advice</li>
+            </ul>
+            <img src="./finance_img.jpg" alt="Finance Overview"  />
+            
+            <!--class="finance-image"-->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Access Your Account</h3>
+            <div class="login-buttons">
+                <button class="btn admin-btn" (click)="goToLogin()">Admin Login</button>
+                <button (click)="goToAgentLogin()" class="btn agent-btn" style="background-color:red">Agent Login</button>
+            </div>
+            <p>&copy; 2024 Finance Portal. All Rights Reserved.</p>
+            <p>Contact us: infofinanceportal.com | +1 234 567 890</p>
+        </div>
+    </footer>
+</div>

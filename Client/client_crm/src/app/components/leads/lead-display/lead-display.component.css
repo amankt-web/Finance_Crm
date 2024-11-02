@@ -1,0 +1,245 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent body scrolling */
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+  overflow: hidden; /* Disable modal scrolling */
+}
+
+.modal-dialog {
+  max-width: 80vw; /* Limit modal width to 80% of the viewport */
+  max-height: 80vh; /* Limit modal height to 80% of the viewport */
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensure no scrollbars in the dialog */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+}
+
+.close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* List Styles */
+.list-container {
+  margin-top: 20px;
+}
+
+.header-row, .data-row, .details-row {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.header-row {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.data-row {
+  background-color: #fff;
+}
+
+.data-row:hover {
+  background-color: #f1f1f1;
+}
+
+.data-item, .header-item {
+  flex: 1;
+  text-align: left;
+}
+
+.edit-button, .delete-button {
+  margin-left: 8px;
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+
+
+/* Grid Layout for the Details Section */
+.details-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+  gap: 12px;
+  padding: 12px;
+  background-color: #f9f9f9;
+  /* Prevent scrollbars */
+}
+
+.details-item {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .details-row {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .details-row {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+  }
+}
+
+/* Prevent scrolling inside modal */
+.modal-dialog {
+  overflow: hidden;
+}
+
+.delete-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: #45a049;
+}
+
+.mail-button {
+  padding: 10px 20px;
+  background-color: red; /* Red background */
+  color: white;          /* White text */
+  border: none;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.mail-button i {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.mail-button:hover {
+  background-color: darkred; /* Darker red on hover */
+}
+
+
+
+.add-lead-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-lead-button:hover {
+  background-color: #218838;
+}
+
+.header-row {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.data-row {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.data-row:hover {
+  background-color: #f1f1f1;
+}
+
+.whatsapp-button, .mail-button, .edit-button, .delete-button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.whatsapp-button {
+  background-color: #25d366;
+  color: white;
+}
+
+.mail-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}

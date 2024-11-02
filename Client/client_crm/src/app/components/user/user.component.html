@@ -1,0 +1,70 @@
+<div class="user-management-container">
+  <h2>User Management</h2>
+
+  <!-- Button to open the popup -->
+  <button (click)="openAddUserPopup()" class="btn btn-primary add-user-btn" style="margin-top: -38px;">Add User</button>
+
+  <!-- Popup Modal -->
+  <div class="popup" *ngIf="showAddUserPopup">
+    <div class="popup-content">
+      <span class="close" (click)="closePopup()">&times;</span>
+      <h3>Add User</h3>
+      <form (ngSubmit)="addUser()">
+        <div class="input-group">
+          <label for="newUserEmail">Email:</label>
+          <input
+            type="email"
+            id="newUserEmail"
+            [(ngModel)]="newUserEmail"
+            name="newUserEmail"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="newUserPassword">Password:</label>
+          <input
+            type="password"
+            id="newUserPassword"
+            [(ngModel)]="newUserPassword"
+            name="newUserPassword"
+            class="form-control"
+            required
+          />
+        </div>
+
+        <div class="input-group">
+          <button type="submit" class="btn btn-primary submit-button">
+            Add User
+          </button>
+        </div>
+
+        <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Table -->
+  <div class="user-table-container" style="margin-top: 86px;">
+    <table class="user-table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th style="width: 31%;">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.email }}</td>
+          <td>
+            <button (click)="editUser(user)" class="edit-btn">Update</button>&nbsp; &nbsp;
+            &nbsp; &nbsp;<button (click)="deleteUser(user._id)" class="delete-btn">Delete</button>&nbsp; &nbsp;
+            &nbsp; &nbsp;<button (click)=loginAsUser(user._id) class="login-btn">Login</button>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
