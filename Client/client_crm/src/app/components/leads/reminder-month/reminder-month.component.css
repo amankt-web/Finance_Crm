@@ -100,3 +100,20 @@
 .pagination-controls span {
   font-size: 14px;
 }
+
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.status-button.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.status-button.expired {
+  background-color: #f44336;
+  color: white;
+}

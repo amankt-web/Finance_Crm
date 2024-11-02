@@ -12,6 +12,8 @@ const authRoutes = require("./routes/authRoutes");
 const leadRoutes = require("./routes/leadRoute");
 const policyRoutes = require("./routes/reminderRoute");
 const agentRoutes = require("./routes/agentRoutes");
+const reminderRoutes = require("./routes/reminderRoute");
+const graphRoutes = require("./routes/graphRoute");
 
 // Middleware
 app.use(cors({
@@ -36,6 +38,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/leads', leadRoutes);  // Updated to have clear route paths
 app.use('/api/policies', policyRoutes);
 app.use('/api/agents', agentRoutes);
+app.use('/api/reminder', reminderRoutes);
+app.use('/api',graphRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

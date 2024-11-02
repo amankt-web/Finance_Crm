@@ -238,7 +238,18 @@
           <i class="fas fa-envelope" style="margin-right: 5px;"></i>
       </button>
      <!-- Assuming 'lead' is the current lead in your *ngFor loop -->
-        <button class="edit-button" (click)="updateLead(lead._id)" 
+
+     <div *ngIf="isEditModalOpen" >
+      <div class="modal-content">
+        <h3>Edit Lead</h3>
+        <form [formGroup]="leadForm" (ngSubmit)="updateLead(leadForm.value._id)">
+          <!-- Form Fields Here -->
+          <button type="submit">Save Changes</button>
+          <button type="button" (click)="isEditModalOpen = false">Cancel</button>
+        </form>
+      </div>
+    </div>
+        <button class="edit-button" (click)="openEditModal(lead)" 
         style="padding: 5px 10px; border: none; border-radius: 3px; cursor: pointer; 
         background-color: #007bff; color: white; font-size: 14px; transition: background-color 0.3s; 
         display: flex; align-items: center;" title="Update">
@@ -246,7 +257,7 @@
         </button>
 
   
-      <button class="delete-button" (click) ="deleteLead(leadId)"
+      <button class="delete-button" (click) ="deleteLead(lead._id)"
       style="padding: 5px 10px; border: none; border-radius: 3px; cursor: pointer; 
       background-color: #dc3545; color: white; font-size: 14px; transition: background-color 0.3s; 
       display: flex; align-items: center;" title="Delete">
@@ -264,7 +275,7 @@
     <div class="details-item">Mobile Number: {{ lead.mobileNumber }}</div>
     <div class="details-item">Booked In : {{ lead.BookedIn }}</div>
     <div class="details-item">Agent Name: {{ lead.AgentName }}</div>
-    <div class="details-item">Insurance Company: {{ lead.PolicyName }}</div>
+    <div class="details-item">Insurance Company: {{ lead.InsuranceCompany}}</div>
     <div class="details-item">Product: {{ lead.Product }}</div>
     <div class="details-item">CO Rate: {{ lead.CORate }}</div>
     <div class="details-item">Business Type: {{ lead.BusinnessType }}</div>

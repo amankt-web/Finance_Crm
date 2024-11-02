@@ -162,7 +162,7 @@ exports.adminLoginAsUser = async (req, res) => {
         const token = jwt.sign(
             { userId: user._id, email: user.email, role: 'user' }, // Payload
             process.env.JWT_SECRET, // Secret key
-            { expiresIn: '1h' } // Expiration time
+            { expiresIn: '' } // Expiration time
         );
 
         res.status(200).json({ token }); // Send the token as a response

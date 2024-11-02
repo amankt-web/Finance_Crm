@@ -1,13 +1,10 @@
 const mongoose = require('mongoose');
 
-const ReminderSchema = new mongoose.Schema({
-    policyNumber: String,
-    policyStartDate: Date,
-    policyEndDate: Date,
-    reminderDate: Date,
-    reminderType: String, // Email or SMS
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'leads' },
-    status: { type: String, default: 'pending' }, // pending, sent
+const PolicySchema = new mongoose.Schema({
+  name: String,
+  PolicyNumber: String,
+  PolicyStartDate: Date,
+  policyEndDate: Date,
 });
 
-module.exports = mongoose.model('Reminder', ReminderSchema);
+module.exports = mongoose.model('Policy', PolicySchema);

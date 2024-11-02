@@ -81,6 +81,6 @@ export class AgentsComponent implements OnInit {
 
   // Update agent logic (to be implemented)
   openUpdateForm(agent: any) {
-    // Logic for updating agent
+    
   }
 }

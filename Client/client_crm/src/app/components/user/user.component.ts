@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AddUserPopupComponent } from '../add-user-popup-component/add-user-popup-component.component';
 
-
 @Component({
   selector: 'app-user',
   standalone: true,

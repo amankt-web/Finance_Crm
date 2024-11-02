@@ -29,7 +29,7 @@ export class LeadDisplayComponent implements OnInit {
   selectedFile: File | null = null;
   selectedLead: any;
   filteredLeads:any [] = []; 
-
+  isEditModalOpen: boolean = false;
 
   constructor(private fb: FormBuilder, private leadService: LeadService, private route: ActivatedRoute) {
     this.leadForm = this.fb.group({
@@ -76,29 +76,20 @@ export class LeadDisplayComponent implements OnInit {
       COAmount: ['', Validators.required]
     });
     this.leadId = this.route.snapshot.paramMap.get('id') || '';
+    
   }
 
   ngOnInit(): void {
-    this.loadLeads(); // Load leads from the API on initialization
+    this.loadLeads(); 
     this.filteredLeads = [...this.leads];
    
   }
-  // loadLeads(): void {
-  //   this.leadService.getLeads().subscribe({
-  //     next: (data) => {
-  //       this.leads = data.map((lead: any) => ({
-  //         ...lead,
-  //         showDetails: false // Initialize showDetails to false
-  //       }));
-  //       // Save the original leads
-  //       this.originalLeads = [...this.leads];
-  //     },
-  //     error: (err) => {
-  //       console.error('Error fetching leads', err);
-  //     }
-  //   });
-  // }
 
+  openEditModal(lead:any){
+    this.leadForm.patchValue(lead); //populate form with the lead
+    this.isEditModalOpen = true; //show the modal 
+
+  }
   // Filter leads based on search query
  // Filter leads based on search query
 filterData(): void {
@@ -198,11 +189,12 @@ filterData(): void {
   updateLead(leadId: string): void {
     if (this.leadForm.valid) {
       const updatedLead = this.leadForm.value;
+      console.log("updateLead",updatedLead);
       this.leadService.updateLead(leadId, updatedLead).subscribe({
         next: (lead) => {
           this.leads = this.leads.map((l) => (l._id === leadId ? lead : l)); // Update lead in list
-          this.closeModal(); // Close modal after update
-          this.leadForm.reset(); // Reset the form
+          this.isEditModalOpen = false ;
+          this.leadForm.reset(); // Reset the form 
         },
         error: (err) => {
           console.error('Error updating lead', err);
@@ -214,7 +206,8 @@ filterData(): void {
   // Mark lead as deleted (moves to recycle bin)
   // Mark lead as deleted (permanently remove)
 deleteLead(leadId: string): void {
-  console.log("leadId",leadId);
+  const confirmed = window.confirm('Are you sure you want to delete the lead? and also');
+  if(confirmed){
   this.leadService.permanentlyDeleteLead(leadId).subscribe({
     next: () => {
       this.leads = this.leads.filter((lead) => lead._id !== leadId); // Remove lead from the displayed list
@@ -224,6 +217,9 @@ deleteLead(leadId: string): void {
     }
   });
 }
+}
+
+
 
   loadLeads() {
     // Load leads from the service and assign to this.leads

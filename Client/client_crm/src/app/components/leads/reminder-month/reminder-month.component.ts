@@ -33,11 +33,27 @@ export class ReminderMonthComponent implements OnInit {
       this.updatePaginatedPolicies();
     });
   }
-
   updatePaginatedPolicies() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedPolicies = this.policies.slice(startIndex, endIndex);
+  }
+
+  getPolicyStatus(policyEndDate: string): string {
+    const today = new Date();
+    const endDate = new Date(policyEndDate);
+    return endDate > today ? 'Active' : 'Expired';
+  }
+
+  sendWhatsAppMessage(policy: any) {
+    const message = `Hello, your policy ${policy.PolicyNumber} for ${policy.Name} is due soon.`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`);
+  }
+
+  sendEmail(policy: any) {
+    const subject = `Policy Reminder for ${policy.PolicyNumber}`;
+    const body = `Hello, your policy ${policy.PolicyNumber} for ${policy.Name} is due soon. Please review it.`;
+    window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
   nextPage() {

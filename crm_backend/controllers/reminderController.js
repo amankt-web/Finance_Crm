@@ -14,7 +14,46 @@ exports.getPolicies = async (req, res) => {
 // Reminder logic in policyController.js
 
 
+exports.reminders = async(req,res)=>{
+    try {
+        const leads = await Lead.find();
+    const updatedLeads = leads.map((lead)=>{
+        lead = lead.toObject();
+        lead.status = getPolicyStatus(lead.policyEndDate);
+        return lead;
+    });
+    res.status(200).json(updatedLeads);
+        
+    } catch (error) {
+        res.status(500).json({error:"Failed to fetch the leads"});
+    }
+};
 
+exports.intervalReminder = async(req, res) =>{
+    const interval = parseInt(req.params.interval, 10);//2, 14 or 30 days 
+    const now = new Date();
+
+    const reminderThresholdDate = new Date(now.setDate(now.getDate() + interval));
+
+    try {
+        const leads = await Lead.find();
+
+    // Filter leads with a policy end date within the specified interval
+    const filteredLeads = leads.filter((lead) => {
+      const policyEndDate = new Date(lead.policyEndDate);
+      return policyEndDate <= reminderThresholdDate;
+    }).map((lead) => {
+      // Add a status field to each lead object
+      lead = lead.toObject(); // Convert Mongoose document to a plain object
+      lead.status = getPolicyStatus(lead.policyEndDate);
+      return lead;
+    });
+
+    res.status(200).json(filteredLeads);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch leads for reminders' });
+    }
+};
 
 // Assuming your getReminders function looks something like this
 exports.getReminders = async (req, res) => {
