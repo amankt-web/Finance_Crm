@@ -3,6 +3,7 @@ import { UserManagementComponent } from '../../user/user.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-reminder-month',
@@ -27,7 +28,7 @@ export class ReminderMonthComponent implements OnInit {
   }
 
   getAllPolicies() {
-    this.http.get('http://localhost:3600/api/policies').subscribe((response: any) => {
+    this.http.get(`${environment.apiUrl}/policies`).subscribe((response: any) => {
       this.policies = response;
       this.totalPages = Math.ceil(this.policies.length / this.itemsPerPage);
       this.updatePaginatedPolicies();

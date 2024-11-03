@@ -24,15 +24,13 @@ exports.getGraphsData = async (req, res) => {
     const startDate = new Date(yearInt, monthInt, 1); // Start of the month
     const endDate = new Date(yearInt, monthInt + 1, 0, 23, 59, 59); // Last moment of the last day of the month
 
-    console.log('Start Date:', startDate);
-    console.log('End Date:', endDate);
+
 
     // Fetch leads data within the specified date range
     const leads = await Lead.find({
       PolicyStartDate: { $gte: startDate, $lte: endDate }
     });
 
-    console.log('Leads Found:', leads);
 
     // Check if leads were found
     if (leads.length === 0) {

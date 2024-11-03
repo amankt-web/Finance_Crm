@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 // Define an interface for the lead data structure
 export interface Lead {
@@ -51,7 +52,7 @@ export interface Lead {
   providedIn: 'root'
 })
 export class DisplayServiceService {
-  private apiUrl = 'http://localhost:3600/api/leads';  // API URL
+  private apiUrl = `${environment.apiUrl}/leads`;  // API URL
 
   constructor(private http: HttpClient) {}
 

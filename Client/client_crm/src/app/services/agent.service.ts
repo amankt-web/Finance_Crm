@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AgentService {
-  private apiUrl = 'http://localhost:3600/api/agents'; // Ensure this matches your backend API
+  private apiUrl = `${environment.apiUrl}/agents`; // Ensure this matches your backend API
 
   constructor(private http: HttpClient) {}
 

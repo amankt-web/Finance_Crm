@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DisplayServiceService, Lead } from '../../../services/display-service.service'; // Adjust the path as necessary
 import { LeadDisplayComponent } from '../lead-display/lead-display.component';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-lead',
@@ -126,7 +127,7 @@ convertToDate(dateStringOrNumber: any): Date | null {
           COAmount: lead.COAmount   
         }));
   
-        this.http.post('http://localhost:3600/api/leads/bulk', cleanedLeads).subscribe(
+        this.http.post(`${environment.apiUrl}/leads/bulk`, cleanedLeads).subscribe(
           (response) => {
             console.log('Leads imported successfully:', response);
           },
