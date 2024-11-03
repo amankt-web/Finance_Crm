@@ -42,11 +42,12 @@ app.use('/api/agents', agentRoutes);
 app.use('/api/reminder', reminderRoutes);
 app.use('/api',graphRoutes);
 
-app.use(express.static(path.join(__dirname, 'dist/client_crm')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/client_crm/index.html'));
-});
+app.use(express.static(path.join(__dirname, 'dist/client_crm/browser')));
 
+// Route to serve the server index.html file
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'dist/client_crm/server/index.server.html'));
+});
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
