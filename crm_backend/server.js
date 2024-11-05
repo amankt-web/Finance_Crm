@@ -42,11 +42,11 @@ app.use('/api/agents', agentRoutes);
 app.use('/api/reminder', reminderRoutes);
 app.use('/api',graphRoutes);
 
-app.use(express.static(path.join(__dirname, 'dist/client_crm/browser')));
+app.use(express.static(path.join(__dirname, '../Client/client_crm/dist/browser')));
 
 // Route to serve the Angular app's index.html for all non-API routes
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/client_crm/browser/index.html'));
+    res.sendFile(path.join(__dirname, '../Client/client_crm/dist/browser/index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
