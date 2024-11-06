@@ -17,11 +17,17 @@ const reminderRoutes = require("./routes/reminderRoute");
 const graphRoutes = require("./routes/graphRoute");
 
 // Middleware
+const allowedOrigins = ['http://localhost:4200', 'http://103.174.103.80'];
 app.use(cors({
-    origin: 'http://103.174.103.80',  // Allow frontend to access this API
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Authorization', 'Content-Type'] 
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
+
 app.use(express.json());  // To parse JSON requests
 
 // Connect to MongoDB
