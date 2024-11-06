@@ -18,7 +18,7 @@ const graphRoutes = require("./routes/graphRoute");
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:4200',  // Allow frontend to access this API
+    origin: 'http://103.174.103.80',  // Allow frontend to access this API
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Authorization', 'Content-Type'] 
 }));
@@ -44,6 +44,6 @@ app.use('/api',graphRoutes);
 
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+app.listen(PORT,'0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });

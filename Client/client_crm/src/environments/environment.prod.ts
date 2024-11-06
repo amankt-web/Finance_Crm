@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://insure-crm.gloryquick.in/api',
+    apiUrl: 'http://103.174.103.80:3600/api',
     otherVariable: 'production-value'
   };
