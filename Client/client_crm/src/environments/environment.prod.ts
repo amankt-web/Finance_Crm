@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'http://103.174.103.80:3800/api',
+    apiUrl: 'https://backwing.gloryquick.in/api',
     otherVariable: 'production-value'
   };

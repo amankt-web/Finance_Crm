@@ -17,7 +17,7 @@ const reminderRoutes = require("./routes/reminderRoute");
 const graphRoutes = require("./routes/graphRoute");
 
 // Middleware
-const allowedOrigins = ['http://localhost:4200', 'http://103.174.103.80'];
+const allowedOrigins = ['http://localhost:4200'];
 app.use(cors({
   origin: function (origin, callback) {
     if (allowedOrigins.includes(origin) || !origin) {

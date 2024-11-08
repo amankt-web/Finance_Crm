@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:3800/api',
+    apiUrl: 'https://backwing.gloryquick.in/api',
     otherVariable: 'development-value'
   };

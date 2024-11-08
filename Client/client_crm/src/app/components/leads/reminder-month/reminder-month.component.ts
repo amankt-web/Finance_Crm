@@ -74,7 +74,7 @@ export class ReminderMonthComponent implements OnInit {
   getReminders(event: Event): void {
     const value = (event.target as HTMLSelectElement)?.value || '';
 
-    const url = value ? `http://localhost:3800/api/reminders/${value}` : 'http://localhost:3800/api/reminders';
+    const url = value ? `https://backwing.gloryquick.in/api/reminders/${value}` : 'https://backwing.gloryquick.in/api/reminders';
 
     this.http.get(url).subscribe(
       (data: any) => {
