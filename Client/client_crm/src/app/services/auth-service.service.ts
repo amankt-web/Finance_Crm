@@ -133,4 +133,14 @@ createUser(userData: any): Observable<any> {
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/login`, credentials);
   }
+  // Check if a token exists and is valid
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token; // Returns true if a token exists, false otherwise
+  }
+
+  // logout() {
+  //   // Clear token from localStorage
+  //   localStorage.removeItem('token');
+  // }
 }

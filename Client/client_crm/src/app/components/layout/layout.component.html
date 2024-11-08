@@ -4,29 +4,35 @@
     <nav class="sidebar" id="sidebar" style="overflow: hidden; cursor:pointer">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" (click)="setCurrentComponent(dashboardComponent)" routerLinkActive="active">Dashboard</a>
+          <a class="nav-link" [ngClass]="{ 'active': currentComponent === dashboardComponent }" 
+             (click)="setCurrentComponent(dashboardComponent)">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="setCurrentComponent(leadComponent)" routerLinkActive="active">All Lead</a>
+          <a class="nav-link" [ngClass]="{ 'active': currentComponent === leadComponent }" 
+             (click)="setCurrentComponent(leadComponent)">All Lead</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="setCurrentComponent(reminderMonthComponent)" routerLinkActive="active">Renewal</a>
+          <a class="nav-link" [ngClass]="{ 'active': currentComponent === reminderMonthComponent }" 
+             (click)="setCurrentComponent(reminderMonthComponent)">Renewal</a>
         </li>
 
         <!-- Admin-only access -->
-        <li class="nav-item" >
-          <a class="nav-link" (click)="setCurrentComponent(userManagementComponent)" routerLinkActive="active">Users</a>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{ 'active': currentComponent === userManagementComponent }" 
+             (click)="setCurrentComponent(userManagementComponent)">Users</a>
         </li>
-        <li class="nav-item" >
-          <a class="nav-link" (click)="setCurrentComponent(agentsComponent)" routerLinkActive="active">Agents</a>
+        <li class="nav-item">
+          <a class="nav-link" [ngClass]="{ 'active': currentComponent === agentsComponent }" 
+             (click)="setCurrentComponent(agentsComponent)">Agents</a>
         </li>
+
         <!-- Add this in your navbar HTML 
-        <li  class="nav-item">
-       <button class="nav-link" (click)="openResetPasswordPopup()">Reset Password</button>
-       </li> -->
+        <li class="nav-item">
+          <button class="nav-link" (click)="openResetPasswordPopup()">Reset Password</button>
+        </li>-->
 
         <!-- Logout -->
-        <li class="nav-item">
+        <li class="nav-item" style="margin-top: 239px; background-color: indianred; font-weight: 900;">
           <button class="nav-link" (click)="logout()">Logout</button>
         </li>
       </ul>
@@ -35,9 +41,7 @@
     <!-- Add this somewhere in the layout template -->
     <div id="resetPasswordModal" class="modal" style="display: none;">
       <app-reset-password></app-reset-password>
-      
     </div>
-
 
     <!-- Content Area -->
     <div class="content-area" style="width: 76%; overflow: hidden;">

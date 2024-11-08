@@ -1,7 +1,7 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../services/auth-service.service';
-import { isPlatformBrowser } from '@angular/common'; // Import this for platform detection
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -11,32 +11,23 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
-    @Inject(PLATFORM_ID) private platformId: any // Inject the platform ID
+    @Inject(PLATFORM_ID) private platformId: any
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot): boolean {
-    // Check if the code is running in the browser
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (isPlatformBrowser(this.platformId)) {
-      const token = localStorage.getItem('token');
-      const redirectTo = route.data?.['redirectTo']; // Get redirectTo data
+      // Check if the user is logged in by verifying the token
+      const isAuthenticated = this.authService.isLoggedIn();
 
-      if (!token) {
-        return true; // Allow access if not logged in
-      } else if (redirectTo) {
-        this.router.navigate([redirectTo]); // Redirect to specified route if already logged in
+      if (!isAuthenticated) {
+        // If the user is not authenticated, redirect to login
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         return false;
       }
-      return true; // Allow access to protected routes
+      // Allow access if authenticated
+      return true;
     }
-
-    // Default to not allowing activation if it's not in the browser
+    // Prevent access if not running in the browser
     return false;
-  }
-
-  logout() {
-    // Only remove token if running in the browser
-    if (isPlatformBrowser(this.platformId)) {
-      localStorage.removeItem('token');
-    }
   }
 }

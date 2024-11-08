@@ -14,8 +14,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 export const routes: Routes = [
-  { path: '', component:HomeComponent },
-  { path: 'login', component: LoginComponent},
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'user/login', component: UserLoginComponent },
   { path: 'layout', component: LayoutComponent, canActivate: [AuthGuard] },
   { path: 'allLeads', component: LeadComponent, canActivate: [AuthGuard] },
@@ -23,8 +23,9 @@ export const routes: Routes = [
   { path: 'user', component: UserManagementComponent, canActivate: [AuthGuard] },
   { path: 'agents', component: AgentsComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'logout', component: LogoutComponent},
+  { path: 'logout', component: LogoutComponent },
 ];
+
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
